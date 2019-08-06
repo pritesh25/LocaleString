@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PreliumTest</string>
+    <string name="test">Hello World !!!</string>
+    <string name="english">English</string>
+    <string name="urdu">Urdu</string>
+    <string name="arebic">Arebic</string>
+</resources>
