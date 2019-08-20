@@ -21,7 +21,7 @@ class PrefData {
     }
 
     String getCurrentLanguage() {
-        return pref.getString(PREF_LANG, "en");
+        return pref.getString(PREF_LANG, "ur");
     }
 
     void setCurrentLanguage(String language) {

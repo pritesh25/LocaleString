@@ -41,4 +41,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/urdu" />
+
+    <Button
+        android:id="@+id/AlertDialogue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/alter_dialogue" />
 </LinearLayout>

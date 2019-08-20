@@ -4,7 +4,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -32,30 +31,43 @@ public class LocaleActivity extends AppCompatActivity {
 
             prefData = new PrefData(getApplicationContext());
 
-            String s = prefData.getCurrentLanguage();
+            String language = prefData.getCurrentLanguage();
 
-            Locale locale = new Locale(s);
+            Locale locale = null;
+
+            switch (language) {
+                case "en":
+                    locale = new Locale(language, "US");
+                    break;
+                case "ar":
+                    locale = new Locale(language, "AE");
+                    break;
+                case "ur":
+                    locale = new Locale(language, "IN");
+                    break;
+            }
             Locale.setDefault(locale);
-            Resources resource = getResources();
-            DisplayMetrics dm = resource.getDisplayMetrics();
-            Configuration configuration = resource.getConfiguration();
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+
+                Configuration configuration = getResources().getConfiguration();
                 configuration.setLocale(locale);
-            } else {
-                configuration.locale = locale;//new Locale(s.toLowerCase());
-            }
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 configuration.setLayoutDirection(locale);
+                createConfigurationContext(configuration);
 
             } else {
+
+                Resources resources = getResources();
+                Configuration configuration = resources.getConfiguration();
+                configuration.locale = locale;
                 configuration.setLayoutDirection(locale);
+                resources.updateConfiguration(configuration, resources.getDisplayMetrics());
             }
 
-            resource.updateConfiguration(configuration, dm);
         } catch (Exception e) {
             Log.d(tag, "catch error = " + e.getMessage());
         }
     }
+
 }

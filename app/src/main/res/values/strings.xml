@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">PreliumTest</string>
+    <string name="app_name" translatable="false">PreliumTest</string>
     <string name="test">Hello World !!!</string>
-    <string name="english">English</string>
-    <string name="urdu">Urdu</string>
-    <string name="arebic">Arebic</string>
+    <string name="english" translatable="false">English</string>
+    <string name="urdu" translatable="false">Urdu</string>
+    <string name="arebic" translatable="false">Arebic</string>
+    <string name="alter_dialogue" translatable="false">Alert Dialogue</string>
 </resources>
