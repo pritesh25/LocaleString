@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +24,7 @@ public class LocaleActivity extends AppCompatActivity {
 
     private void setAppLocale() {
 
-        Toast.makeText(getApplicationContext(), "api = " + Build.VERSION.SDK_INT, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "api = " + Build.VERSION.SDK_INT, Toast.LENGTH_SHORT).show();
 
         try {
 
@@ -48,22 +47,19 @@ public class LocaleActivity extends AppCompatActivity {
             }
             Locale.setDefault(locale);
 
+            Resources resources = getResources();
+            Configuration configuration = resources.getConfiguration();
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-
-                Configuration configuration = getResources().getConfiguration();
                 configuration.setLocale(locale);
-                configuration.setLayoutDirection(locale);
                 createConfigurationContext(configuration);
 
             } else {
-
-                Resources resources = getResources();
-                Configuration configuration = resources.getConfiguration();
                 configuration.locale = locale;
-                configuration.setLayoutDirection(locale);
-                resources.updateConfiguration(configuration, resources.getDisplayMetrics());
             }
+
+            configuration.setLayoutDirection(locale);
+            resources.updateConfiguration(configuration, resources.getDisplayMetrics());
 
         } catch (Exception e) {
             Log.d(tag, "catch error = " + e.getMessage());
