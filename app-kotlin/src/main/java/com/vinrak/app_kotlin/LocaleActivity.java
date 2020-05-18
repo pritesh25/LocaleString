@@ -1,4 +1,4 @@
-package com.example.preliumtest;
+package com.vinrak.app_kotlin;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -42,6 +42,7 @@ public class LocaleActivity extends AppCompatActivity {
                     locale = new Locale(language, "AE");
                     break;
                 case "ur":
+                case "hi":
                     locale = new Locale(language, "IN");
                     break;
             }
